@@ -1,1 +1,3 @@
-# Grundy_SAE1.01
+#Jeu de Grundy
+
+Note finale de 18,50
