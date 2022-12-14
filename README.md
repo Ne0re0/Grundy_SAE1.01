@@ -36,6 +36,6 @@ Cette algorithme parcourt de manière récursive toutes les dispositions filles 
 Il remonte lorsqu'une disposition fille est perdante ou que toutes les dispositions filles sont gagnantes.
 
 ***
-Projet dans le cadre d'une SAE (Semestre 1 IUT Vannes)
+Projet réalisé dans le cadre d'une SAE (Semestre 1 IUT Vannes)
 
 Note finale de 18,50.
