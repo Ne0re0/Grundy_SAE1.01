@@ -35,6 +35,14 @@ L’algorithme de résolution est principalement basé sur une méthode estPerda
 Cette algorithme parcourt de manière récursive toutes les dispositions filles (parcours d’arbre en profondeur).  
 Il remonte lorsqu'une disposition fille est perdante ou que toutes les dispositions filles sont gagnantes.
 
+### Installation :
+
+```bash git clone https://github.com/Ne0re0/Grundy_SAE1.01.git```
+```bash cd Grundy_SAE1.01```
+```java java -cp class/ Start Grundy```
+
+
+
 ***
 Projet réalisé dans le cadre d'une SAE (Semestre 1 IUT Vannes)
 
