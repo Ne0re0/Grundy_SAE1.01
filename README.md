@@ -17,7 +17,7 @@ Vous l'aurez donc compris, un t'as de 2 allumettes ne pourra plus être séparé
 Lorsqu'il ne reste que des rangées de 1 ou 2 allumettes, le jeu est terminé.  
 
 ***
-### Méthode suivie par l'IA: 
+### Méthode suivie par l'IA : 
 
 La stratégie gagnante se base sur l’état de la disposition mère. Il existe deux états différents : l’état gagnant et l’état perdant.  
 Une disposition mère est dite perdante si pour le joueur qui joue il n’est possible que de perdre si le joueur en face ne fait pas d’erreur.  
@@ -35,11 +35,11 @@ L’algorithme de résolution est principalement basé sur une méthode estPerda
 Cette algorithme parcourt de manière récursive toutes les dispositions filles (parcours d’arbre en profondeur).  
 Il remonte lorsqu'une disposition fille est perdante ou que toutes les dispositions filles sont gagnantes.
 
-### Installation :
+### Installation :  
 
-```bash git clone https://github.com/Ne0re0/Grundy_SAE1.01.git```
-```bash cd Grundy_SAE1.01```
-```java java -cp class/ Start Grundy```
+```git clone https://github.com/Ne0re0/Grundy_SAE1.01.git```  
+```cd Grundy_SAE1.01```  
+```java -cp class/ Start Grundy```  
 
 
 
