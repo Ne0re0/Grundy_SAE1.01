@@ -16,7 +16,7 @@ class Grundy{
      * Demande au joueur s'il souhaite jouer une partie contre un autre joueur ou contre l'ordinateur
      * Lance une partie selon ce choix
      */
-    void principal(){
+    public static void main(String[] args){
         int gamemode; 
         do { gamemode = SimpleInput.getInt("Choisissez le mode de jeu | 1 : 1 joueur | 2 : 2 joueurs : ");
         } while (gamemode < 1 || gamemode > 2);
@@ -30,7 +30,7 @@ class Grundy{
     /**
      * Lance une partie du jeu de Grundy contre l'ordinateur
      */
-    void soloGame(){
+    static void soloGame(){
         int stickQuantity; 
         int lineNB;
         int stickNB;
@@ -113,7 +113,7 @@ class Grundy{
      * @param gameboard
      * @return Les coordonnées {numéro de ligne, quantité d'allumette} du coup à jouer
      */
-    int[] moveDefiner(int[] gameboard){
+    static int[] moveDefiner(int[] gameboard){
         int[] move = {0,0};
         int i = 0;
         boolean found = false;
@@ -151,7 +151,7 @@ class Grundy{
      * @param gameboard
      * @param expected boolean attendu de isALoosingGameboard
      */
-    void testCaseMoveDefiner(int[] gameboard, boolean expected){
+    static void testCaseMoveDefiner(int[] gameboard, boolean expected){
         System.out.println("****** test");
         display(gameboard);
         int[] move = moveDefiner(gameboard);
@@ -168,7 +168,7 @@ class Grundy{
      * Teste en batterie la méythode MoveDefiner
      * Le tableau doit être jouable, la vérification se fait avant l'appel de la méthode
      */
-    void testMoveDefiner(){
+    static void testMoveDefiner(){
         System.out.println("**** Tests MoveDefiner ******");
         int[] gameboard1 = {3,0,0};
         testCaseMoveDefiner(gameboard1, true);
@@ -191,7 +191,7 @@ class Grundy{
      * Si une disposition fille est perdante alors la disposition 
      * mère est gagnante donc la méthode renvoie false
      */
-    boolean isALoosingGameboard(int[] gameboard){
+    static boolean isALoosingGameboard(int[] gameboard){
         if (!isPlayable(gameboard)){
             return true;
         }
@@ -227,7 +227,7 @@ class Grundy{
      * @param gameboard 
      * @param expected boolean reponse attendue
      */
-    void testCasisALoosingGameboard(int[] gameboard, boolean expected){
+    static void testCasisALoosingGameboard(int[] gameboard, boolean expected){
         System.out.println(" *******  Test ");
         System.out.print("Gameboard : "+ Arrays.toString(gameboard) + " expected = " + expected);
         if (isALoosingGameboard(gameboard)== expected){
@@ -238,7 +238,7 @@ class Grundy{
         }
     }
 
-    void testisALoosingGameboard(){
+    static void testisALoosingGameboard(){
         System.out.println(" *******  Test de la méthode isALoosingGameboard *********");
         int[] gameboard1 = {2,0};
         testCasisALoosingGameboard(gameboard1, true);
@@ -270,7 +270,7 @@ class Grundy{
      * En faisant une copie dans une autre adresse, on peut stocker les 
      * différentes positions sans créer de problèmes
      */
-    int[] deepSplit(int[] gameboard, int ligne, int quantity){
+    static int[] deepSplit(int[] gameboard, int ligne, int quantity){
         int[] newGameboard = new int[gameboard.length];
         int i = 0;
         while (i < newGameboard.length && gameboard[i] != 0){
@@ -286,7 +286,7 @@ class Grundy{
         }
         
 
-    void testCaseDeepSplit(int[] gameboard, int ligne, int quantity, int[] expected){
+    static void testCaseDeepSplit(int[] gameboard, int ligne, int quantity, int[] expected){
         System.out.println("****** Test");
         System.out.println(Arrays.toString(gameboard));
         System.out.println("Numéro de ligne : "+ ligne);
@@ -300,7 +300,7 @@ class Grundy{
         }
     }
 
-    void testDeepSplit(){
+    static void testDeepSplit(){
         System.out.println(" *******  Test de la méthode deepSplit *********");
         int[] gameboard1 = {4,0,0,0};
         int[] expected1 = {1,3,0,0};
@@ -319,7 +319,7 @@ class Grundy{
      * @return true s'il est possible de jouer encore au moins un coup
      * @return false sinon
      */
-    boolean isPlayable(int[] gameboard){
+    static boolean isPlayable(int[] gameboard){
         boolean playable = false;
         for(int i = 0 ; i < gameboard.length ; i++){
             if (gameboard[i] > 2){
@@ -334,7 +334,7 @@ class Grundy{
      * @param gameboard
      * @param expected
      */
-    void testCaseIsPlayable(int[] gameboard, boolean expected){
+    static void testCaseIsPlayable(int[] gameboard, boolean expected){
         System.out.println(" *******  Test ");
         System.out.print(Arrays.toString(gameboard));
         System.out.print(" Attentes : " + expected + " ");
@@ -348,7 +348,7 @@ class Grundy{
     /**
      * Test en batterie la méthode isPlayable()
      */
-    void testIsPlayable(){
+    static void testIsPlayable(){
         System.out.println(" *******  Test de la méthode isPlayable() *********");
         int[] gameboard1 = {7,3,0,0};
         testCaseIsPlayable(gameboard1, true);
@@ -364,7 +364,7 @@ class Grundy{
     /**
      * Lance une partie joueur contre joueur du jeu de Grundy
      */
-    void PvPGame(){
+    static void PvPGame(){
         //on établie toutes les variables qui seront nécéssaires
         int stickQuantity; 
         int current_player;
@@ -435,7 +435,7 @@ class Grundy{
      * @return le tableau de la taille adéquate avec @stickQuantity en premier element
      * 
      */
-    int[] createGameboard(int stickQuantity){
+    static int[] createGameboard(int stickQuantity){
         int[] gameboard = new int[ stickQuantity ];
         gameboard[0] = stickQuantity;
         return gameboard;
@@ -449,7 +449,7 @@ class Grundy{
      * @param stickQuantity
      * @param expected
      */
-    void testCaseCreateGameboard(int stickQuantity, int[] expected){
+    static void testCaseCreateGameboard(int stickQuantity, int[] expected){
         System.out.println(" *******  Test");
         System.out.print("Nombre d'allumette = " + stickQuantity + " ");
         int[] gameboard = createGameboard(stickQuantity);
@@ -464,7 +464,7 @@ class Grundy{
     /**
      * Teste en batterie la méthode createGameboard
      */
-    void testCreateGameboard(){
+    static void testCreateGameboard(){
         System.out.println(" *******  Test de la méthode createGameboard *********");
         int[] expected1 = {4,0,0,0};
         testCaseCreateGameboard(4, expected1);
@@ -476,7 +476,7 @@ class Grundy{
      * Affiche avec des bâtons l'êtat du jeu
      * @param gameboard le tableau d'entier du jeu
      */
-    void display(int[] gameboard){
+    static void display(int[] gameboard){
         int i = 0;
         while( i < gameboard.length && gameboard[i] != 0 ){
             System.out.print(i + "\t : ");
@@ -493,7 +493,7 @@ class Grundy{
      * La vérification doit se faire à l'oeil
      * @param gameboard
      */
-    void testCaseDisplay(int[] gameboard){
+    static void testCaseDisplay(int[] gameboard){
         System.out.println(" *******  Test ");
         System.out.println(Arrays.toString(gameboard));
         display(gameboard);
@@ -503,7 +503,7 @@ class Grundy{
      * Teste en batterie la méthode display()
      * La vérification doit se faire à la main
      */
-    void testDisplay(){
+    static void testDisplay(){
         System.out.println(" *******  Test de la méthode display *********");
         int[] gameboard1 = {7,3,0,0};
         testCaseDisplay(gameboard1);
@@ -518,7 +518,7 @@ class Grundy{
      * @param lineNB le numero de la ligne du tableau souhaitée
      * @param stickQuantity la quantité de batons à séparer
      */
-    void split(int[] gameboard, int lineNB, int stickQuantity){
+    static void split(int[] gameboard, int lineNB, int stickQuantity){
         int i =0;
         while(gameboard[i] != 0){
             i++;
@@ -528,7 +528,7 @@ class Grundy{
         System.out.println();
     }
 
-    void testCaseSplit(int[] gameboard, int lineNB, int stickQuantity, int[] expected){
+    static void testCaseSplit(int[] gameboard, int lineNB, int stickQuantity, int[] expected){
         System.out.println("********* Test");
         display(gameboard);
         split(gameboard, lineNB, stickQuantity);
@@ -547,7 +547,7 @@ class Grundy{
      * Teste en batterie la méthode split() en batterie
      * On donnera des arguments valide car la vérification se fera avant
      */
-    void testSplit(){
+    static void testSplit(){
         System.out.println(" *******  Test de la méthode split *********");
         int[] gameboard = {7,0,0,0};
         int[] expected1 = {4,3,0,0};
@@ -570,7 +570,7 @@ class Grundy{
      * @return true s'il est possible de separer StickQuantity bâtons de la ligne LineNB du tableau de jeu
      * false sinon
      */
-    boolean possible(int[] gameboard, int lineNB, int stickNB){
+    static boolean possible(int[] gameboard, int lineNB, int stickNB){
         boolean possible = false;
         if (gameboard[lineNB] > 2){
             if (gameboard[lineNB] == 3){
@@ -585,7 +585,7 @@ class Grundy{
         return possible;
     }
 
-    void testCasePossible(int[] gameboard, int lineNB, int stickNB, boolean expected){
+    static void testCasePossible(int[] gameboard, int lineNB, int stickNB, boolean expected){
         System.out.println(" *******  Test");
         display(gameboard);
         System.out.print("Ligne choisie : " + lineNB + " | nombre d'allumette à séparer : " + stickNB + " : ");
@@ -600,7 +600,7 @@ class Grundy{
      * test en batterie la m"thode possible()
      * On ne prend ici que des index existants car la vérification aura déjà eu lieu
      */
-    void testPossible(){
+    static void testPossible(){
         System.out.println(" *******  Test de la méthode possible() *********");
         int[] gameboard = {7,0,0,0};
         testCasePossible(gameboard, 0,3, true);
@@ -618,7 +618,7 @@ class Grundy{
      * @return l'index de la seule ligne jouable s'il y en a une 
      * S'il en a plusieurs ou aucune, renvoie -1
      */
-    int playableLine(int[] gameboard, int divideQuantity){
+    static int playableLine(int[] gameboard, int divideQuantity){
         int index = -1;
         if (divideQuantity == 0) {
             index = 0;
@@ -647,7 +647,7 @@ class Grundy{
      * @param divideQuantity
      * @param expected
      */
-    void testCasPlayableLineQuantity(int[] gameboard, int divideQuantity, int expected){
+    static void testCasPlayableLineQuantity(int[] gameboard, int divideQuantity, int expected){
         System.out.println("*****  Test ");
         display(gameboard);
         if (playableLine(gameboard, divideQuantity) == expected){
@@ -662,7 +662,7 @@ class Grundy{
     /**
      * Teste en batterie la méthode playableLine()
      */
-    void testPlayableLine(){
+    static void testPlayableLine(){
         System.out.println(" *******  Test de la méthode playableLine *********");
         int[] gameboard = {7,0,0,0};
         testCasPlayableLineQuantity(gameboard, 0,0);
