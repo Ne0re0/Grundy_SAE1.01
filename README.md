@@ -39,8 +39,8 @@ Il remonte lorsqu'une disposition fille est perdante ou que toutes les dispositi
 
 ```bash 
 git clone https://github.com/Ne0re0/Grundy_SAE1.01.git
-bash cd Grundy_SAE1.01
-java java -cp class/ Start Grundy
+cd Grundy_SAE1.01
+java -cp class/ Grundy
 ```
 
 
